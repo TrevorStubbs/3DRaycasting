@@ -1,0 +1,15 @@
+html{
+  background-color: black;
+}
+
+body {
+  width: 1000px;
+  height: 1000px;
+  margin: auto;
+  background-color: black;
+  color: red;
+}
+
+canvas{
+  border: 1px solid white;
+}
