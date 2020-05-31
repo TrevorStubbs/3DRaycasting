@@ -22,7 +22,7 @@ class Particle{
     this.fov = fov;
     this.rays = [];
     for (let a = -this.fov / 2; a < this.fov / 2; a+=1){
-      this.rays.push(new Ray(this.pos, radians(a)));
+      this.rays.push(new Ray(this.pos, radians(a) + this.heading));
     }
   }
 
@@ -66,7 +66,12 @@ class Particle{
         //find the closest wall
         if(pt){
           // find distance to each wall
-          const d = p5.Vector.dist(this.pos, pt);
+          let d = p5.Vector.dist(this.pos, pt);
+          //TODO
+          const a = ray.dir.heading() - this.heading;
+          if (!mouseIsPressed){
+            d *= cos(a);
+          }
           // If a wall is the closest make it the record
           if(d < record){
             record = d;
